@@ -29,6 +29,7 @@ mount /dev/md${PORTSMD} ${PORTSDIR}
 echo "`date`: Exporting \"${TREEHASH}\" ports tree"
 git --git-dir=${STATEDIR}/gitrepo worktree prune
 git --git-dir=${STATEDIR}/gitrepo worktree add ${PORTSDIR} ${TREEHASH}
+(cd ${PORTSDIR} && git restore-mtime)
 df -i ${PORTSDIR}
 
 # Create snapshot
